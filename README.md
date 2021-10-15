@@ -197,4 +197,4 @@ DONE  Compiled successfully in 5866ms                                           
 
 ```
 
-Terakhir tinggal jalankan @php @artisan @serve dan lihat hasilnya. Silahkan dicoba.
+Terakhir tinggal jalankan `php artisan serve` dan lihat hasilnya. Silahkan dicoba.
