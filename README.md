@@ -63,3 +63,138 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 "# laravel-simple-landing-page" 
+
+## How to Install Bootstrap on new project
+
+1. Create new Laravel project
+
+```
+# laravel new project-name
+
+or
+
+# composer create-project --prefer-dist laravel/laravel project-name
+```
+
+2. Kemudian install node modules.
+
+```
+# npm install
+```
+
+3. Lalu kita install bootstrap dan library pendukung.
+
+```
+npm install bootstrap jquery popper.js --save-dev
+
+npm install @popperjs/core
+
+```
+
+4. Kemudian buka bootstrap.js dan tambahkan dibawah ini.
+
+```
+//resources/js/bootstrap.js
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
+
+```
+
+5. Setelah itu kita install sass dan sass-loader.
+
+```
+npm install sass sass-loader --save-dev
+```
+
+6. Selanjutnya buat folder baru di direktori resources dengan nama sass. Pada folder sass kita tambahkan file baru dengan nama app.scss, dan kita import bootstrap.
+
+```
+//resources/sass/app.scss
+@import '~bootstrap/scss/bootstrap';
+```
+
+7. Setelah bootstrap di import kita akan gunakan compiler laravel mix. Kita buka file webpack.mix.js, buat seperti dibawah ini.
+
+```
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css');
+```
+
+8. Lalu jalankan perintah npm run dev.
+
+```
+@labootstrap  ➜  npm run dev
+DONE  Compiled successfully in 5866ms                                                                        2:25:35 PM
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   179 KiB  /js/app  [emitted]  /js/app
+  /js/app.js  1.08 MiB  /js/app  [emitted]  /js/app
+
+```
+
+9. Pemanggilan
+
+```
+<link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+<script src="{{ mix('js/app.js') }}"></script>
+
+```
+
+10. Sebagai contoh, silahkan buka file welcome.blade.php, ubah html yang ada dengan dibawah ini.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel 8</title>
+    <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
+    <script src="{{ mix('js/app.js') }}"></script>
+  </body>
+</html>
+
+```
+
+Terakhir tinggal jalankan @php @artisan @serve dan lihat hasilnya. Silahkan dicoba.
