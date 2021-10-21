@@ -64,6 +64,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 "# laravel-simple-landing-page" 
 
+
+## How to clone this project
+
+1. Run `git clone 'link projer github'
+```
+git clone https://github.com/muhamien/laravel-simple-landing-page.git
+```
+
+2. Installing the composer
+```
+composer install
+```
+
+3. Run ``cp .env.example .env`` or ``copy .env.example .env ``
+
+4. Run ``php artisan key:generate``
+
+5. Run ``php artisan migrate``
+
+6. Run ``php artisan serve``
+
+
+## Instal breeze with bootstrap
+# Official documentation
+Visit repository on (github)[https://github.com/khadegd/laravel-breeze-bootstrap]
+```
+laravel new my-app
+
+cd my-app
+
+composer require khadegd/laravel-breeze-bootstrap --dev
+
+php artisan breeze:install
+
+```
+
+
 ## How to Install Bootstrap on new project
 
 1. Create new Laravel project
@@ -123,6 +160,24 @@ npm install sass sass-loader --save-dev
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 ```
+  Install laravel ui
+  - instal laravel ui
+  ```
+  composer require laravel/ui
+  ```
+  
+  - [optional] use vuejs or reactjs 
+  ```
+  php artisan ui vue --auth
+  or
+  php artisan ui react --auth
+  ```
+
+  - instal npm
+  ```
+  npm install
+  ```
+  - ``npm run dev``
 
 8. Lalu jalankan perintah npm run dev.
 
