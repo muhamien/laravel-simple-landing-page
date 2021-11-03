@@ -147,7 +147,7 @@ try {
 npm install sass sass-loader --save-dev
 ```
 
-6. Selanjutnya buat folder baru di direktori resources dengan nama sass. Pada folder sass kita tambahkan file baru dengan nama app.scss, dan kita import bootstrap.
+6. Selanjutnya buat folder baru di direktori resources dengan nama ```sass```. Pada folder sass kita tambahkan file baru dengan nama ```app.scss```, dan kita import bootstrap.
 
 ```
 //resources/sass/app.scss
